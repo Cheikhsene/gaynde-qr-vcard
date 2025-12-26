@@ -1,0 +1,339 @@
+/* 
+ * Gaynde Qr Vcard - Styles Senegalais
+ * Design inspire de la culture et des couleurs du Senegal
+ */
+
+/* Import des polices - DOIT etre en premier */
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@400,500,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS - Palette Senegalaise */
+:root {
+	--color-senegal: #00853F;
+	--color-gold: #FDEF42;
+	--color-teranga: #E31B23;
+	--color-earth: #B8755A;
+	--color-baobab: #2D251E;
+	--color-baobab-light: #3D332A;
+}
+
+/* Base styles */
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+	
+	body {
+		@apply font-body antialiased;
+		color: #F1EDE6;
+		background: linear-gradient(180deg, #1A1613 0%, #2D251E 50%, #1A1613 100%);
+		background-attachment: fixed;
+		min-height: 100vh;
+	}
+	
+	/* Motif africain subtil en overlay */
+	body::before {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FDEF42' fill-opacity='0.02'%3E%3Cpath d='M40 0L80 40L40 80L0 40L40 0zm0 16L16 40l24 24l24-24L40 16z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+		pointer-events: none;
+		z-index: -1;
+	}
+	
+	::selection {
+		background: rgba(253, 239, 66, 0.3);
+		color: white;
+	}
+}
+
+/* Component styles */
+@layer components {
+	/* Liens avec soulignement dore */
+	.link {
+		@apply relative inline-flex items-center gap-1;
+		@apply font-medium;
+		@apply transition-all duration-300;
+		color: #FBBF24;
+	}
+	
+	.link:hover {
+		color: #FEF08A;
+	}
+	
+	.link::after {
+		@apply absolute -bottom-0.5 left-0 w-0 h-0.5;
+		background: linear-gradient(90deg, #00853F, #FDEF42, #E31B23);
+		@apply transition-all duration-300;
+		content: '';
+	}
+	
+	.link:hover::after {
+		@apply w-full;
+	}
+
+	/* Champs de saisie */
+	.input {
+		@apply w-full px-4 py-3;
+		@apply backdrop-blur-sm;
+		@apply rounded-xl;
+		@apply transition-all duration-300;
+		@apply focus:outline-none;
+		background: rgba(45, 37, 30, 0.6);
+		border: 1px solid rgba(96, 78, 62, 0.5);
+		color: #F1EDE6;
+	}
+	
+	.input::placeholder {
+		color: #8C7259;
+	}
+	
+	.input:focus {
+		background: rgba(45, 37, 30, 0.8);
+		border-color: rgba(0, 133, 63, 0.5);
+		box-shadow: 0 0 0 3px rgba(0, 133, 63, 0.15);
+	}
+	
+	.input.--block {
+		@apply block w-full;
+	}
+
+	/* Labels */
+	.label {
+		@apply text-sm font-medium mb-2 block;
+		color: #B9A48A;
+	}
+
+	/* Bouton principal - Vert Senegal */
+	.btn {
+		@apply relative inline-flex items-center justify-center gap-2;
+		@apply px-8 py-4;
+		@apply font-display font-semibold tracking-wide uppercase text-sm;
+		@apply rounded-xl;
+		@apply transition-all duration-300;
+		@apply cursor-pointer select-none;
+		@apply no-underline;
+		@apply text-white;
+		background: linear-gradient(135deg, #00853F 0%, #065F46 100%);
+		box-shadow: 0 4px 20px rgba(0, 133, 63, 0.3);
+	}
+	
+	.btn:hover {
+		background: linear-gradient(135deg, #34D399 0%, #00853F 100%);
+		box-shadow: 0 8px 30px rgba(0, 133, 63, 0.4);
+		transform: translateY(-2px);
+	}
+	
+	.btn:focus {
+		@apply outline-none;
+		box-shadow: 0 0 0 3px rgba(0, 133, 63, 0.4);
+	}
+	
+	.btn:active {
+		transform: translateY(0);
+	}
+	
+	.btn.--sm {
+		@apply px-4 py-2 text-xs;
+		@apply rounded-lg;
+	}
+	
+	.btn.--lg {
+		@apply px-10 py-5 text-base;
+	}
+	
+	.btn.--icon {
+		@apply p-3;
+		@apply rounded-full;
+	}
+	
+	.btn.--outline {
+		background: transparent;
+		border: 2px solid #00853F;
+		color: #34D399;
+		box-shadow: none;
+	}
+	
+	.btn.--outline:hover {
+		background: rgba(0, 133, 63, 0.1);
+	}
+	
+	/* Bouton accent - Or/Jaune */
+	.btn.--accent {
+		background: linear-gradient(135deg, #FBBF24 0%, #EAB308 100%);
+		color: #1A1613;
+		box-shadow: 0 4px 20px rgba(253, 239, 66, 0.3);
+	}
+	
+	.btn.--accent:hover {
+		background: linear-gradient(135deg, #FEF08A 0%, #FBBF24 100%);
+		box-shadow: 0 8px 30px rgba(253, 239, 66, 0.4);
+	}
+	
+	/* Bouton ghost */
+	.btn.--ghost {
+		background: rgba(45, 37, 30, 0.6);
+		border: 1px solid rgba(96, 78, 62, 0.5);
+		color: #E3DDD0;
+		box-shadow: none;
+	}
+	
+	.btn.--ghost:hover {
+		background: rgba(45, 37, 30, 0.8);
+		border-color: rgba(96, 78, 62, 0.7);
+		color: #F1EDE6;
+	}
+	
+	/* Bouton danger */
+	.btn.--danger {
+		background: linear-gradient(135deg, #E31B23 0%, #B91C1C 100%);
+		box-shadow: 0 4px 20px rgba(227, 27, 35, 0.3);
+	}
+
+	/* Cards */
+	.card {
+		@apply relative;
+		@apply backdrop-blur-xl;
+		@apply rounded-2xl;
+		@apply p-6;
+		@apply transition-all duration-300;
+		background: rgba(45, 37, 30, 0.5);
+		border: 1px solid rgba(96, 78, 62, 0.4);
+	}
+	
+	.card:hover {
+		border-color: rgba(96, 78, 62, 0.6);
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+	}
+	
+	.card.--glow {
+		box-shadow: 0 0 40px rgba(0, 133, 63, 0.15);
+	}
+	
+	.card.--glow:hover {
+		box-shadow: 0 0 60px rgba(0, 133, 63, 0.25);
+	}
+
+	/* Badges */
+	.badge {
+		@apply inline-flex items-center gap-1.5;
+		@apply px-3 py-1.5;
+		@apply text-xs font-semibold uppercase tracking-wider;
+		@apply rounded-full;
+		background: rgba(0, 133, 63, 0.15);
+		color: #34D399;
+		border: 1px solid rgba(0, 133, 63, 0.25);
+	}
+	
+	.badge.--accent {
+		background: rgba(253, 239, 66, 0.1);
+		color: #FBBF24;
+		border-color: rgba(253, 239, 66, 0.25);
+	}
+	
+	.badge.--teranga {
+		background: rgba(227, 27, 35, 0.1);
+		color: #F87171;
+		border-color: rgba(227, 27, 35, 0.25);
+	}
+
+	/* Section headings avec barre tricolore */
+	.section-heading {
+		@apply font-display font-semibold text-lg;
+		@apply mb-4;
+		@apply flex items-center gap-3;
+		color: #E3DDD0;
+	}
+	
+	.section-heading::before {
+		@apply w-1 h-6 rounded-full;
+		background: linear-gradient(180deg, #00853F 0%, #FDEF42 50%, #E31B23 100%);
+		content: '';
+	}
+
+	/* Dividers tricolores */
+	.divider {
+		@apply h-px w-full;
+		background: linear-gradient(90deg, transparent 0%, #00853F 25%, #FDEF42 50%, #E31B23 75%, transparent 100%);
+		opacity: 0.3;
+	}
+	
+	.divider.--simple {
+		background: linear-gradient(90deg, transparent 0%, rgba(253, 239, 66, 0.3) 50%, transparent 100%);
+	}
+}
+
+/* Utility classes */
+@layer utilities {
+	/* Gradient text tricolore */
+	.text-gradient {
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		background-image: linear-gradient(90deg, #00853F 0%, #FDEF42 50%, #E31B23 100%);
+	}
+	
+	/* Gradient text dore */
+	.text-gradient-gold {
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		background-image: linear-gradient(90deg, #FDEF42 0%, #EAB308 100%);
+	}
+	
+	/* Gradient text vert */
+	.text-gradient-green {
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		background-image: linear-gradient(135deg, #34D399 0%, #00853F 100%);
+	}
+
+	/* Animations delays */
+	.animate-delay-100 { animation-delay: 100ms; }
+	.animate-delay-200 { animation-delay: 200ms; }
+	.animate-delay-300 { animation-delay: 300ms; }
+	.animate-delay-400 { animation-delay: 400ms; }
+	.animate-delay-500 { animation-delay: 500ms; }
+
+	/* Glassmorphism africain */
+	.glass {
+		background: rgba(45, 37, 30, 0.4);
+		backdrop-filter: blur(20px);
+		border: 1px solid rgba(96, 78, 62, 0.3);
+	}
+	
+	/* Hide scrollbar */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+}
+
+/* Custom scrollbar style africain */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #1A1613;
+}
+
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, #00853F 0%, #065F46 100%);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg, #00853F 0%, #047857 100%);
+}

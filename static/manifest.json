@@ -1,0 +1,15 @@
+{
+	"short_name": "Gaynde QR",
+	"name": "Gaynde Qr Vcard - Generateur de QR Code Contact",
+	"start_url": "/",
+	"icons": [
+		{ "src": "/favicon-192x192.png", "type": "image/png", "sizes": "192x192" },
+		{ "src": "/favicon-512x512.png", "type": "image/png", "sizes": "512x512" }
+	],
+	"display": "standalone",
+	"scope": "/",
+	"theme_color": "#00853F",
+	"background_color": "#1A1613",
+	"shortcuts": [],
+	"description": "Creez des QR codes vCard professionnels. Partagez vos coordonnees en un scan - Teranga Numerique"
+}
